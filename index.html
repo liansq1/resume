@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>连圣琪 - 个人简历</title>
+  <style>
+    :root {
+      --bg: #f7f1dc;
+      --bg-soft: #eef6d7;
+      --green: #b9d88b;
+      --green-deep: #557540;
+      --ink: #20231f;
+      --muted: #6f7468;
+      --line: #c8c8ba;
+      --card: rgba(255, 252, 240, 0.78);
+      --white: #fffdf6;
+      --shadow: 0 24px 70px rgba(84, 99, 61, 0.13);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(203, 232, 144, 0.55), transparent 26%),
+        radial-gradient(circle at 82% 16%, rgba(241, 224, 151, 0.68), transparent 30%),
+        linear-gradient(135deg, var(--bg) 0%, #fbf6e8 45%, var(--bg-soft) 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+      line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(70, 82, 54, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(70, 82, 54, 0.045) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.58), transparent);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .brand::before {
+      content: "";
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--green);
+      border: 1px solid var(--green-deep);
+    }
+
+    .nav__links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .nav__links a {
+      padding: 7px 13px;
+      border: 1px solid rgba(32, 35, 31, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 253, 246, 0.48);
+      color: #4c5147;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .nav__links a:hover {
+      border-color: var(--green-deep);
+      background: rgba(217, 237, 176, 0.7);
+      color: var(--ink);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 45%);
+      gap: clamp(36px, 6vw, 78px);
+      align-items: center;
+      padding: 54px 0 84px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 253, 246, 0.62);
+      color: #59614f;
+      font-size: 13px;
+      font-weight: 760;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green-deep);
+    }
+
+    h1 {
+      font-size: clamp(64px, 9.2vw, 132px);
+      line-height: 0.9;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .education-lines {
+      max-width: 680px;
+      margin-top: 42px;
+      color: #3f453b;
+      font-size: clamp(20px, 1.9vw, 28px);
+      line-height: 1.9;
+      font-weight: 760;
+    }
+
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .info-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 14px;
+      border: 1px solid #b6b6aa;
+      border-radius: 999px;
+      background: rgba(255, 253, 246, 0.62);
+      color: #30342e;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .hero__photo {
+      position: relative;
+      align-self: stretch;
+      min-height: 620px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(105, 118, 82, 0.28);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .hero__photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: 50% 18%;
+    }
+
+    .hero__photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 12px solid rgba(255, 253, 246, 0.46);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .section {
+      padding: 86px 0;
+      border-top: 1px solid rgba(119, 124, 107, 0.24);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-index {
+      color: var(--green-deep);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .section h2 {
+      font-size: clamp(32px, 4.1vw, 56px);
+      line-height: 1;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: 138px minmax(0, 1fr);
+      gap: 30px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 68px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, #9eaa88 8%, #9eaa88 92%, transparent);
+    }
+
+    .time {
+      position: relative;
+      min-height: 42px;
+      padding-top: 6px;
+      color: #5f6659;
+      font-size: 13px;
+      font-weight: 780;
+      text-align: right;
+      padding-right: 34px;
+    }
+
+    .time::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 12px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid var(--green-deep);
+      background: #f9f5e6;
+      box-shadow: 0 0 0 6px rgba(185, 216, 139, 0.28);
+    }
+
+    .item {
+      margin-bottom: 22px;
+      padding: 26px 28px;
+      border: 1px solid rgba(117, 125, 100, 0.24);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 14px 45px rgba(94, 105, 75, 0.08);
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item__top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 12px;
+      color: #34392f;
+      font-size: clamp(18px, 1.75vw, 24px);
+      line-height: 1.38;
+      font-weight: 820;
+      letter-spacing: 0;
+    }
+
+    .item__top span:last-child {
+      color: #62685e;
+      font-size: 0.88em;
+      font-weight: 760;
+      text-align: right;
+    }
+
+    .item p,
+    .item li {
+      color: #464b42;
+      font-size: 15px;
+      line-height: 1.86;
+    }
+
+    .item ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .item li {
+      position: relative;
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    .item li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.78em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-deep);
+    }
+
+    strong {
+      color: #252a22;
+      font-weight: 850;
+    }
+
+    .metric-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .metric {
+      padding: 5px 10px;
+      border: 1px solid #b6b6aa;
+      border-radius: 999px;
+      background: rgba(255, 253, 246, 0.58);
+      color: #4a5142;
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skill-card {
+      min-height: 172px;
+      padding: 22px;
+      border: 1px solid rgba(117, 125, 100, 0.25);
+      border-radius: 24px;
+      background: rgba(255, 253, 246, 0.68);
+      box-shadow: 0 12px 38px rgba(94, 105, 75, 0.08);
+    }
+
+    .skill-card h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .skill-card p {
+      color: #50564c;
+      font-size: 14px;
+      line-height: 1.78;
+    }
+
+    footer {
+      padding: 34px 0 46px;
+      border-top: 1px solid rgba(119, 124, 107, 0.24);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 34px;
+      }
+
+      .hero__photo {
+        min-height: 560px;
+        order: -1;
+      }
+
+      .section-head,
+      .timeline {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .timeline::before {
+        left: 6px;
+      }
+
+      .time {
+        text-align: left;
+        padding: 0 0 0 30px;
+      }
+
+      .time::after {
+        left: 0;
+        right: auto;
+      }
+
+      .skills {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      body {
+        overflow-x: hidden;
+      }
+
+      .page {
+        width: min(100% - 26px, 1180px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 58px;
+      }
+
+      .hero__photo {
+        min-height: 460px;
+        border-radius: 26px;
+      }
+
+      .item {
+        padding: 22px 18px;
+      }
+
+      .item__top {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .skills {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav" aria-label="页面导航">
+      <a class="brand" href="#top">连圣琪</a>
+      <div class="nav__links">
+        <a href="#internship">实习经历</a>
+        <a href="#campus">校园工作</a>
+        <a href="#projects">项目经历</a>
+        <a href="#skills">技能奖项</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="top">
+      <div class="hero__copy">
+        <div class="eyebrow">随时到岗 / 每周 5 天 / 可全职实习 3 个月</div>
+        <h1>连圣琪</h1>
+        <p class="education-lines">北京科技大学&nbsp;&nbsp;能源与动力工程专业<br />保研至北京航空航天大学</p>
+        <div class="info-grid">
+          <span class="info-pill">电话 15234686054</span>
+          <a class="info-pill" href="mailto:15234686054@163.com">邮箱 15234686054@163.com</a>
+          <span class="info-pill">山西长治</span>
+        </div>
+      </div>
+      <figure class="hero__photo">
+        <img src="profile-photo.jpg" alt="连圣琪证件照" />
+      </figure>
+    </section>
+
+    <section class="section" id="internship">
+      <div class="section-head">
+        <span class="section-index">01 / EXPERIENCE</span>
+        <h2>实习经历</h2>
+      </div>
+      <div class="timeline">
+        <div class="time">2026.02<br />2026.06</div>
+        <article class="item">
+          <div class="item__top"><span>快手 · 直播业务部</span><span>产品运营实习生</span></div>
+          <p>直播业务部聚焦<strong>主播拉新、留存与增长</strong>，拉新方向全渠道累计新增主播约 <strong>4w</strong>；实习期间聚焦用户裂变渠道，关注新增主播 <strong>DAU</strong>、营收贡献与转化。</p>
+          <ul>
+            <li><strong>裂变链路优化</strong>：针对被邀请主播需手动填写邀请码、路径长且易错填的问题，提出并推动“点击接受邀请”方案落地，实现邀请关系自动绑定，邀约成功率提升 <strong>14%</strong>。</li>
+            <li><strong>资源位投放优化</strong>：主导 <strong>CMS 资源位运营</strong>，基于用户点击偏好与活动核心卖点，利用 <strong>ChatGPT 与 Prompt</strong> 快速生成多版视觉图片，点击率提升 <strong>78%</strong>，开播率提升 <strong>11%</strong>。</li>
+            <li><strong>Agent 提效建设</strong>：利用 <strong>Codeflicker 和 Klaw</strong> 搭建拉新数据自动回流与健康度监控流程，覆盖 <strong>4 个渠道、5 个核心指标</strong>，沉淀 <strong>2 套可复用 Skills</strong>。</li>
+          </ul>
+          <div class="metric-row">
+            <span class="metric">新增主播约 4w</span>
+            <span class="metric">邀约成功率 +14%</span>
+            <span class="metric">点击率 +78%</span>
+            <span class="metric">开播率 +11%</span>
+          </div>
+        </article>
+
+        <div class="time">2025.07<br />2025.08</div>
+        <article class="item">
+          <div class="item__top"><span>马鞍山钢铁股份有限公司</span><span>能耗数据分析实习生</span></div>
+          <ul>
+            <li>深入钢铁生产线与中央控制室，系统学习钢铁长流程以及现代钢材的工艺环节。</li>
+            <li>跟踪并记录炼铁工序<strong>实时生产数据</strong>，分析<strong>设备效率与能耗关联</strong>；撰写 <strong>3 份</strong>周度生产运行效率简报。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="campus">
+      <div class="section-head">
+        <span class="section-index">02 / CAMPUS</span>
+        <h2>校园工作经历</h2>
+      </div>
+      <div class="timeline">
+        <div class="time">2024.03<br />2025.02</div>
+        <article class="item">
+          <div class="item__top"><span>北京科技大学校团委青年文体活动中心</span><span>艺术团联络组组长</span></div>
+          <ul>
+            <li>参与近 <strong>20 场</strong>大型文体活动的策划与举办，如迎新晚会、舞蹈团及话剧团专场演出、“高雅艺术进校园”系列演出等，负责<strong>方案构思、流程设计、前期准备及现场安排</strong>。</li>
+            <li>统筹<strong>志愿者招募与任务分配</strong>，累计组织志愿者近 <strong>500 人</strong>；协调参演社团及个人超 <strong>200 名</strong>。</li>
+            <li>负责观众组织与现场管理，单场活动最高观众规模达 <strong>3500 人</strong>。</li>
+          </ul>
+          <div class="metric-row">
+            <span class="metric">近 20 场活动</span>
+            <span class="metric">500 名志愿者</span>
+            <span class="metric">200+ 参演人员</span>
+            <span class="metric">3500 人单场观众</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-head">
+        <span class="section-index">03 / PROJECTS</span>
+        <h2>项目经历</h2>
+      </div>
+      <div class="timeline">
+        <div class="time">2025.04<br />2025.08</div>
+        <article class="item">
+          <div class="item__top"><span>基于花鼓发电的水循环温控自行车坐垫设计</span><span>队长</span></div>
+          <p>负责<strong>系统整体技术方案设计</strong>，将骑行动能转化为电力，驱动半导体与水循环温控模块，实现坐垫表面降温与附属冷饮功能；利用 <strong>Solidworks</strong> 完成 <strong>3D 建模</strong>，<strong>Ansys</strong> 完成热力学仿真，优化能量收集与散热效率。</p>
+          <div class="metric-row">
+            <span class="metric">Solidworks</span>
+            <span class="metric">Ansys</span>
+            <span class="metric">制冷空调行业大学生科技竞赛二等奖</span>
+          </div>
+        </article>
+
+        <div class="time">2025.03<br />2025.06</div>
+        <article class="item">
+          <div class="item__top"><span>虹吸绿色屋顶协同 TENG 自供能的雨水回用系统</span><span>队长</span></div>
+          <p>设计集成<strong>屋顶绿化、虹吸雨水收集与自供能技术</strong>的系统，实现建筑节水与能耗降低；负责技术可行性分析与效益评估，可使空调能耗降低 <strong>17.29%</strong>，年节水超 <strong>1200m3</strong>，并利用 <strong>Origin</strong> 进行数据可视化处理。</p>
+          <div class="metric-row">
+            <span class="metric">空调能耗 -17.29%</span>
+            <span class="metric">年节水超 1200m3</span>
+            <span class="metric">北京市节能节水低碳减排竞赛二等奖</span>
+          </div>
+        </article>
+
+        <div class="time">2022.11<br />2023.12</div>
+        <article class="item">
+          <div class="item__top"><span>校级本科生科研项目 SRTP - 氢能储存发展调研</span><span>队员</span></div>
+          <p>系统调研不同储氢技术的原理、优缺点与应用现状，聚焦<strong>固态储氢材料</strong>如金属氢化物、MOFs 等的技术发展与瓶颈；独立完成固态储氢板块<strong>资料收集、分析对比与报告撰写</strong>，项目已通过学校审批结项。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-head">
+        <span class="section-index">04 / SKILLS</span>
+        <h2>技能与奖项</h2>
+      </div>
+      <div class="skills">
+        <div class="skill-card">
+          <h3>工具能力</h3>
+          <p>精通 Office 办公软件、SQL、Python、Lammps；掌握 Figma、PS、Solidworks、Matlab。</p>
+        </div>
+        <div class="skill-card">
+          <h3>运营与表达</h3>
+          <p>具备自媒体运营经验、活动策划经验与主持能力，擅长复盘、组织协调和跨角色沟通。</p>
+        </div>
+        <div class="skill-card">
+          <h3>语言能力</h3>
+          <p>CET-6，能阅读英文资料并进行基础业务沟通。</p>
+        </div>
+        <div class="skill-card">
+          <h3>荣誉奖项</h3>
+          <p>国家级奖项 2 项、省部级奖项 4 项、校级奖项 10 余项；优秀毕业生、优秀毕业论文、国家一等奖学金等。</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>连圣琪 · 个人展示简历网页</footer>
+  </main>
+</body>
+</html>
