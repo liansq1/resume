@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="连圣琪的个人简历：产品运营、AI 应用与能源工程背景。" />
   <title>连圣琪 - 个人简历</title>
+  <script>document.documentElement.classList.add("js-ready");</script>
   <style>
     :root {
       --bg: #f7f1dc;
@@ -16,7 +18,7 @@
       --card: rgba(255, 252, 240, 0.78);
       --white: #fffdf6;
       --shadow: 0 24px 70px rgba(84, 99, 61, 0.13);
-      --radius: 28px;
+      --radius: 8px;
     }
 
     * {
@@ -60,7 +62,7 @@
     }
 
     .page {
-      width: min(1180px, calc(100% - 44px));
+      width: min(80vw, 1440px);
       margin: 0 auto;
     }
 
@@ -117,12 +119,27 @@
     }
 
     .hero {
+      position: relative;
+      isolation: isolate;
       min-height: calc(100vh - 72px);
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(360px, 45%);
-      gap: clamp(36px, 6vw, 78px);
+      gap: clamp(24px, 3vw, 42px);
       align-items: center;
       padding: 54px 0 84px;
+    }
+
+    .hero__copy {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      min-width: 0;
+      min-height: clamp(520px, 72vh, 640px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 16px 0;
     }
 
     .eyebrow {
@@ -130,12 +147,12 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 24px;
-      padding: 8px 12px;
+      padding: 9px 14px;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: rgba(255, 253, 246, 0.62);
       color: #59614f;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 760;
     }
 
@@ -148,26 +165,74 @@
     }
 
     h1 {
-      font-size: clamp(64px, 9.2vw, 132px);
+      font-size: clamp(48px, 5.4vw, 76px);
       line-height: 0.9;
       font-weight: 900;
       letter-spacing: 0;
+    }
+
+    .floating-tags {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .floating-tag {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.47);
+      box-shadow: 0 10px 26px rgba(86, 103, 68, 0.12);
+      color: #384234;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1;
+      backdrop-filter: blur(10px);
+      animation: gentle-float 5.8s ease-in-out infinite;
+    }
+
+    .tag-vibe { top: 8%; left: 49%; animation-delay: -1.1s; }
+    .tag-data { top: 21%; right: 3%; animation-delay: -3.6s; }
+    .tag-entj { top: 43%; left: 50%; animation-delay: -2.2s; }
+    .tag-action { top: 55%; right: 3%; animation-delay: -4.4s; }
+
+    @keyframes gentle-float {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -11px, 0); }
     }
 
     .education-lines {
       max-width: 680px;
       margin-top: 42px;
       color: #3f453b;
-      font-size: clamp(20px, 1.9vw, 28px);
-      line-height: 1.9;
+      font-size: clamp(16px, 2.05vw, 28px);
+      line-height: 2;
       font-weight: 760;
+    }
+
+    .education-lines span {
+      display: block;
+      white-space: nowrap;
     }
 
     .info-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 34px;
+      gap: 14px;
+      margin-top: 0;
+    }
+
+    .hero-contact-stack {
+      display: grid;
+      width: fit-content;
+      max-width: 100%;
+      gap: 18px;
+      margin-top: 42px;
     }
 
     .info-pill {
@@ -183,8 +248,105 @@
       font-weight: 650;
     }
 
+    .download-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      margin-top: 0;
+      padding: 10px 14px;
+      border: 1px solid var(--green-deep);
+      border-radius: 8px;
+      background: rgba(217, 237, 176, 0.72);
+      color: #27331f;
+      font-size: 14px;
+      font-weight: 800;
+      transition: background-color 180ms ease, transform 180ms ease;
+    }
+
+    .hero-quote {
+      margin-top: 28px;
+      color: #4e5947;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .download-button:hover {
+      background: #d7e9ad;
+      transform: translateY(-2px);
+    }
+
+    .prompt-kit-entry {
+      display: grid;
+      gap: 9px;
+      margin-top: 20px;
+      padding: 20px 22px;
+      border: 1px solid rgba(117, 125, 100, 0.25);
+      border-radius: 8px;
+      background: rgba(255, 253, 246, 0.48);
+    }
+
+    .prompt-kit-lead {
+      color: #3f4939;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-self: center;
+      margin: 0 auto;
+    }
+
+    .prompt-kit-entry__actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .prompt-kit-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 9px 13px;
+      border: 1px solid #9eaf90;
+      border-radius: var(--radius);
+      background: rgba(255, 253, 246, 0.66);
+      color: #34402f;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+    }
+
+    .prompt-kit-button__arrow { transition: transform 200ms ease; }
+
+    .prompt-kit-button:hover {
+      border-color: var(--green-deep);
+      background: #edf5d7;
+      box-shadow: 0 8px 18px rgba(84, 99, 61, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .prompt-kit-button:hover .prompt-kit-button__arrow { transform: translateX(3px); }
+
+    .prompt-kit-note {
+      max-width: 500px;
+      color: #697260;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
     .hero__photo {
       position: relative;
+      z-index: 1;
       align-self: stretch;
       min-height: 620px;
       border-radius: 34px;
@@ -278,6 +440,54 @@
       box-shadow: 0 0 0 6px rgba(185, 216, 139, 0.28);
     }
 
+    .time--logo::after {
+      top: -9px;
+      right: -28px;
+      width: 54px;
+      height: 54px;
+      border: 1px solid rgba(85, 117, 64, 0.42);
+      background: rgba(255, 253, 246, 0.78);
+      box-shadow: 0 0 0 5px rgba(185, 216, 139, 0.28);
+    }
+
+    .timeline-logo-frame {
+      position: absolute;
+      z-index: 2;
+      top: -6px;
+      right: -25px;
+      width: 48px;
+      height: 48px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .timeline-logo {
+      position: absolute;
+      display: block;
+      max-width: none;
+      mix-blend-mode: multiply;
+    }
+
+    .timeline-logo-frame--kuaishou .timeline-logo {
+      top: -7px;
+      left: 50%;
+      width: 112px;
+      height: auto;
+      transform: translateX(-50%);
+    }
+
+    .timeline-logo-frame--ma-steel .timeline-logo {
+      top: 0;
+      left: 50%;
+      width: 54px;
+      height: auto;
+      transform: translateX(-50%);
+    }
+
+    .timeline-logo-frame--ma-steel {
+      clip-path: inset(0 0 8px 0);
+    }
+
     .item {
       margin-bottom: 22px;
       padding: 26px 28px;
@@ -313,8 +523,8 @@
     .item p,
     .item li {
       color: #464b42;
-      font-size: 15px;
-      line-height: 1.86;
+      font-size: 16px;
+      line-height: 1.9;
     }
 
     .item ul {
@@ -352,40 +562,748 @@
     }
 
     .metric {
-      padding: 5px 10px;
+      padding: 6px 11px;
       border: 1px solid #b6b6aa;
       border-radius: 999px;
       background: rgba(255, 253, 246, 0.58);
       color: #4a5142;
+      font-size: 13px;
+      font-weight: 760;
+    }
+
+    .capabilities-section {
+      padding-bottom: 104px;
+    }
+
+    .capabilities-heading {
+      max-width: 720px;
+      margin: -8px 0 64px 224px;
+      color: #50564c;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .capabilities-flow {
+      display: grid;
+      gap: 84px;
+    }
+
+    .capability-block {
+      border-top: 1px solid rgba(119, 124, 107, 0.2);
+      padding-top: 34px;
+    }
+
+    .capability-split {
+      display: grid;
+      grid-template-columns: minmax(210px, 30%) minmax(0, 70%);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: start;
+    }
+
+    .capability-kicker {
+      color: var(--green-deep);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .capability-intro h3,
+    .works-title,
+    .media-title,
+    .awards-title {
+      margin-top: 8px;
+      color: var(--ink);
+      font-size: clamp(26px, 3.1vw, 42px);
+      line-height: 1.12;
+      font-weight: 850;
+    }
+
+    .capability-intro p,
+    .works-subtitle,
+    .media-subtitle,
+    .awards-subtitle {
+      margin-top: 16px;
+      color: #5c6455;
+      font-size: 15px;
+      line-height: 1.82;
+    }
+
+    .intro-label {
+      display: inline-flex;
+      margin-top: 22px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #485641;
       font-size: 12px;
       font-weight: 760;
     }
 
-    .skills {
+    .skill-group-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .skill-group {
+      min-height: 164px;
+      padding: 20px;
+      border: 1px solid rgba(117, 125, 100, 0.25);
+      border-radius: 8px;
+      background: rgba(255, 253, 246, 0.54);
+    }
+
+    .skill-group h4 {
+      margin-bottom: 16px;
+      color: #34392f;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cap-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 11px;
+      border: 1px solid rgba(117, 125, 100, 0.23);
+      border-radius: 999px;
+      background: rgba(255, 253, 246, 0.72);
+      color: #4d5548;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+    }
+
+    .cap-tag:hover {
+      border-color: #829574;
+      background: #edf5d7;
+      transform: translateY(-1px);
+    }
+
+    .works-head,
+    .media-head,
+    .awards-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .works-title,
+    .media-title,
+    .awards-title {
+      margin-top: 0;
+    }
+
+    .works-subtitle,
+    .media-subtitle,
+    .awards-subtitle {
+      max-width: 680px;
+    }
+
+    .works-label {
+      flex: 0 0 auto;
+      color: var(--green-deep);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      display: grid;
+      overflow: hidden;
+      border: 1px solid rgba(117, 125, 100, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 253, 246, 0.58);
+      transition: border-color 240ms ease, transform 240ms ease;
+    }
+
+    .project-card:hover {
+      border-color: #829574;
+      transform: translateY(-4px);
+    }
+
+    .project-cover-link {
+      display: block;
+      color: inherit;
+    }
+
+    .project-cover-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .project-cover-link:focus-visible {
+      display: block;
+      outline: 3px solid rgba(85, 117, 64, 0.48);
+      outline-offset: -4px;
+    }
+
+    .project-cover-button:focus-visible {
+      outline: 3px solid rgba(85, 117, 64, 0.48);
+      outline-offset: -4px;
+    }
+
+    .project-card--featured {
+      grid-row: span 2;
+    }
+
+    .project-card--studio {
+      border-color: rgba(62, 119, 86, 0.34);
+      background: rgba(250, 253, 244, 0.68);
+    }
+
+    .project-card__body {
+      display: grid;
+      align-content: start;
+      gap: 13px;
+      padding: 22px;
+    }
+
+    .project-card--featured .project-card__body {
+      gap: 11px;
+      padding: 21px 24px 23px;
+    }
+
+    .project-card h4 {
+      color: #2e352a;
+      font-size: clamp(19px, 2vw, 28px);
+      line-height: 1.24;
+    }
+
+    .project-card:not(.project-card--featured) h4 {
+      font-size: 19px;
+    }
+
+    .project-card p {
+      color: #5b6454;
+      font-size: 15px;
+      line-height: 1.78;
+    }
+
+    .project-card--featured .project-summary {
+      color: #45513e;
+      font-size: 18px;
+      font-weight: 650;
+      line-height: 1.72;
+    }
+
+    .project-summary strong {
+      color: #273322;
+      font-weight: 850;
+    }
+
+    .project-status {
+      display: inline-flex;
+      justify-self: start;
+      padding: 5px 9px;
+      border: 1px solid rgba(62, 119, 86, 0.34);
+      border-radius: 999px;
+      background: rgba(225, 240, 214, 0.72);
+      color: #3e6950;
+      font-size: 12px;
+      font-weight: 820;
+    }
+
+    .project-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .project-service-tag {
+      display: inline-flex;
+      padding: 5px 9px;
+      border: 1px solid rgba(64, 104, 78, 0.24);
+      border-radius: 6px;
+      background: rgba(238, 246, 230, 0.82);
+      color: #46604d;
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .project-detail {
+      display: grid;
+      gap: 5px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(117, 125, 100, 0.18);
+    }
+
+    .project-detail__label {
+      color: #718069;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+
+    .project-detail__content {
+      color: #3e4939;
+      font-size: 15px;
+      font-weight: 720;
+      line-height: 1.78;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 2px;
+    }
+
+    .text-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 6px 10px;
+      border: 1px solid #9aab8b;
+      border-radius: 6px;
+      background: transparent;
+      color: #3d4a36;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .text-button:hover { border-color: var(--green-deep); background: #edf5d7; }
+    .project-experience-note { margin: 0; color: #798075 !important; font-size: 12px !important; line-height: 1.7 !important; }
+    .project-card--featured .card-actions { margin-top: 12px; }
+    .project-card--featured .text-button { min-height: 40px; padding: 8px 15px; font-size: 14px; }
+
+    .media-frame {
+      position: relative;
+      display: grid;
+      overflow: hidden;
+      place-items: center;
+      border-bottom: 1px solid rgba(117, 125, 100, 0.2);
+      background: #e8efcf;
+    }
+
+    .media-frame--wide { aspect-ratio: 16 / 9; }
+    .media-frame--regular { aspect-ratio: 16 / 10; }
+    .media-frame--square { aspect-ratio: 1; }
+    .media-frame--studio { aspect-ratio: 4 / 3; }
+    .media-frame--portrait { aspect-ratio: 3 / 4; }
+    .media-frame--award { aspect-ratio: 4 / 3; }
+    .media-frame--avatar { width: 64px; aspect-ratio: 1; border: 1px solid rgba(117, 125, 100, 0.24); border-radius: 50%; }
+
+    .media-frame img {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 240ms ease;
+    }
+
+    .media-frame.is-fallback img { display: none; }
+    .project-card:hover .media-frame img { transform: scale(1.03); }
+    .project-card--studio .media-frame img { object-position: center; }
+
+    .media-fallback {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      color: #68745e;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .media-layout,
+    .awards-layout {
+      display: grid;
+      grid-template-columns: minmax(230px, 35%) minmax(0, 65%);
+      gap: clamp(24px, 4vw, 56px);
+      align-items: start;
+    }
+
+    .account-card {
+      padding: 22px;
+      border: 1px solid rgba(117, 125, 100, 0.25);
+      border-radius: 8px;
+      background: rgba(255, 253, 246, 0.54);
+    }
+
+    .account-top {
+      display: flex;
+      align-items: center;
       gap: 14px;
     }
 
-    .skill-card {
-      min-height: 172px;
-      padding: 22px;
+    .account-card h4 { font-size: 19px; }
+    .account-card p { margin-top: 2px; color: #60695a; font-size: 13px; }
+    .account-direction { margin-top: 20px; color: #545e4d; font-size: 14px; line-height: 1.8; }
+    .account-card .tag-list { margin-top: 18px; }
+
+    .account-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 22px 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(117, 125, 100, 0.2);
+    }
+
+    .account-stat { color: #5e6758; font-size: 11px; line-height: 1.45; }
+    .account-stat strong { display: block; margin-bottom: 4px; font-size: 22px; }
+
+    .media-work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .content-work {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(117, 125, 100, 0.24);
+      border-radius: 8px;
+      background: rgba(255, 253, 246, 0.54);
+    }
+
+    .content-work__copy {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      padding: 13px;
+      background: rgba(255, 253, 246, 0.9);
+      transform: translateY(58%);
+      transition: transform 220ms ease, background-color 220ms ease;
+    }
+
+    .content-work:hover .content-work__copy,
+    .content-work:focus-visible .content-work__copy {
+      background: rgba(255, 253, 246, 0.96);
+      transform: translateY(0);
+    }
+
+    .content-work h5 { color: #414b3d; font-size: 14px; line-height: 1.45; }
+    .content-work p { margin-top: 4px; color: #6b7466; font-size: 12px; }
+
+    .award-summary {
+      display: grid;
+      gap: 18px;
+      padding: 10px 0;
+    }
+
+    .award-count {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: #46513d;
+      white-space: nowrap;
+    }
+
+    .award-count strong { color: var(--green-deep); font-size: clamp(40px, 4vw, 58px); line-height: 0.92; }
+    .award-count span { font-size: clamp(17px, 1.4vw, 21px); font-weight: 800; }
+    .award-note { margin: 4px 0 0; color: #5b6454; font-size: 14px; line-height: 1.85; }
+
+    .award-tag-wall {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      gap: 10px;
+      padding: 6px 0;
+    }
+
+    .award-tag {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      min-height: 35px;
+      padding: 8px 13px;
+      border: 1px solid rgba(88, 112, 72, 0.27);
+      border-radius: 999px;
+      color: #3f5138;
+      font-weight: 760;
+      line-height: 1.45;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .award-tag:hover { border-color: #789068; transform: translateY(-2px); }
+    .award-tag--small { font-size: 13px; }
+    .award-tag--medium { font-size: 14px; }
+    .award-tag--large { font-size: 15px; }
+    .award-tag--sage { background: rgba(220, 235, 202, 0.82); }
+    .award-tag--lime { background: rgba(231, 241, 179, 0.8); }
+    .award-tag--yellow { background: rgba(246, 235, 175, 0.74); }
+    .award-tag--moss { background: rgba(207, 225, 186, 0.82); }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(24, 30, 22, 0.58);
+    }
+
+    .lightbox[hidden] { display: none; }
+    .lightbox__dialog { position: relative; width: min(880px, 100%); max-height: calc(100vh - 48px); overflow: auto; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px; background: var(--white); }
+    .lightbox__dialog .media-frame { min-height: min(66vh, 580px); border: 0; }
+    .lightbox__dialog .media-frame img { object-fit: contain; }
+    .lightbox__close { position: absolute; top: 10px; right: 10px; z-index: 2; width: 34px; height: 34px; border: 1px solid #aab6a1; border-radius: 50%; background: var(--white); color: #34402f; font-size: 20px; line-height: 1; cursor: pointer; }
+
+    .lightbox__dialog--gallery { width: min(1040px, 100%); padding: 28px; }
+    .project-gallery { display: grid; gap: 16px; }
+    .project-gallery__head { padding-right: 42px; }
+    .project-gallery__eyebrow { color: #71845e; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .project-gallery__title { margin-top: 5px; color: #2f3d2c; font-size: clamp(23px, 3vw, 34px); line-height: 1.24; }
+    .project-gallery__grid { display: grid; gap: 14px; }
+    .project-gallery__item { overflow: hidden; margin: 0; border: 1px solid rgba(117, 125, 100, 0.22); border-radius: 7px; background: #fff; }
+    .project-gallery__item img { display: block; width: 100%; height: auto; }
+    .project-gallery__tip { margin: 3px 0 0; padding: 13px 15px; border-left: 3px solid #87a276; background: rgba(237, 245, 224, 0.72); color: #53604c; font-size: 14px; line-height: 1.75; }
+
+    .prompt-kit-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(24, 30, 22, 0.48);
+    }
+
+    .prompt-kit-modal[hidden] { display: none; }
+    body.modal-open { overflow: hidden; }
+
+    .prompt-kit-dialog {
+      position: relative;
+      width: min(720px, 100%);
+      max-height: calc(100vh - 48px);
+      overflow: auto;
+      padding: 34px;
+      border: 1px solid rgba(117, 125, 100, 0.38);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .prompt-kit-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid #aab6a1;
+      border-radius: 50%;
+      background: rgba(255, 253, 246, 0.9);
+      color: #34402f;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .prompt-kit-kicker {
+      display: inline-flex;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--green-deep);
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+
+    .prompt-kit-dialog h2 {
+      max-width: 550px;
+      margin-top: 14px;
+      color: var(--ink);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.18;
+    }
+
+    .prompt-kit-description {
+      max-width: 620px;
+      margin-top: 14px;
+      color: #5b6454;
+      font-size: 15px;
+      line-height: 1.82;
+    }
+
+    .prompt-kit-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .prompt-kit-preview {
+      min-height: 180px;
+      padding: 17px;
       border: 1px solid rgba(117, 125, 100, 0.25);
-      border-radius: 24px;
-      background: rgba(255, 253, 246, 0.68);
-      box-shadow: 0 12px 38px rgba(94, 105, 75, 0.08);
+      border-radius: 8px;
+      background: rgba(238, 246, 215, 0.45);
     }
 
-    .skill-card h3 {
-      margin-bottom: 12px;
-      font-size: 20px;
+    .prompt-kit-preview__index {
+      color: var(--green-deep);
+      font-size: 12px;
+      font-weight: 850;
     }
 
-    .skill-card p {
-      color: #50564c;
+    .prompt-kit-preview h3 {
+      margin-top: 11px;
+      color: #34392f;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .prompt-kit-preview p {
+      margin-top: 8px;
+      color: #616a5b;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .prompt-kit-status {
+      display: inline-flex;
+      margin-top: 13px;
+      padding: 4px 7px;
+      border: 1px solid #bdceab;
+      border-radius: 999px;
+      background: rgba(255, 253, 246, 0.74);
+      color: #5d7150;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .prompt-kit-notice {
+      margin-top: 20px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--green-deep);
+      background: rgba(238, 246, 215, 0.52);
+      color: #53604b;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .prompt-kit-content {
+      margin-top: 18px;
+      border: 1px solid rgba(117, 125, 100, 0.28);
+      border-radius: 8px;
+      background: rgba(255, 253, 246, 0.58);
+    }
+
+    .prompt-kit-content summary {
+      padding: 13px 15px;
+      color: #3e4d37;
       font-size: 14px;
-      line-height: 1.78;
+      font-weight: 800;
+      cursor: pointer;
     }
+
+    .prompt-kit-content pre {
+      max-height: 320px;
+      overflow: auto;
+      margin: 0;
+      padding: 16px;
+      border-top: 1px solid rgba(117, 125, 100, 0.2);
+      color: #4d5848;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      font-size: 12px;
+      line-height: 1.75;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .prompt-kit-feedback {
+      min-height: 22px;
+      margin-top: 14px;
+      color: #557540;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .prompt-kit-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .prompt-kit-primary,
+    .prompt-kit-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 13px;
+      border-radius: var(--radius);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .prompt-kit-primary {
+      border: 1px solid var(--green-deep);
+      background: rgba(217, 237, 176, 0.8);
+      color: #27331f;
+    }
+
+    .prompt-kit-secondary {
+      border: 1px solid #aab6a1;
+      background: transparent;
+      color: #475441;
+    }
+
+    .prompt-kit-primary:hover,
+    .prompt-kit-secondary:hover { transform: translateY(-2px); }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(85, 117, 64, 0.48);
+      outline-offset: 3px;
+    }
+
+    .reveal {
+      transition: opacity 700ms cubic-bezier(.22, 1, .36, 1), transform 700ms cubic-bezier(.22, 1, .36, 1);
+    }
+
+    html.js-ready .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+    }
+
+    html.js-ready .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    html.js-ready .reveal[data-delay="1"] { transition-delay: 100ms; }
+    html.js-ready .reveal[data-delay="2"] { transition-delay: 180ms; }
 
     footer {
       padding: 34px 0 46px;
@@ -395,10 +1313,40 @@
       text-align: center;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      .reveal,
+      html.js-ready .reveal,
+      html.js-ready .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .floating-tag { animation: none; }
+
+      .prompt-kit-button,
+      .prompt-kit-button__arrow,
+      .prompt-kit-primary,
+      .prompt-kit-secondary { transition: none; }
+    }
+
     @media (max-width: 920px) {
+      .page {
+        width: min(calc(100% - 44px), 820px);
+      }
+
       .hero {
         grid-template-columns: 1fr;
         padding-top: 34px;
+      }
+
+      .hero__copy {
+        width: min(100%, 620px);
+        min-height: 0;
+        display: block;
+        padding: 0;
       }
 
       .hero__photo {
@@ -426,9 +1374,32 @@
         right: auto;
       }
 
-      .skills {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .time--logo::after {
+        top: -11px;
+        left: -18px;
+        right: auto;
       }
+
+      .timeline-logo-frame {
+        top: -8px;
+        left: -15px;
+        right: auto;
+      }
+
+      .capabilities-heading {
+        margin-left: 0;
+      }
+
+      .capability-split,
+      .media-layout,
+      .awards-layout,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card--featured { grid-row: auto; }
+
+      .prompt-kit-preview-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 620px) {
@@ -446,8 +1417,18 @@
       }
 
       h1 {
-        font-size: 58px;
+        font-size: clamp(40px, 8vw, 52px);
       }
+
+      .floating-tag {
+        padding: 8px 11px;
+        font-size: 13px;
+      }
+
+      .tag-vibe { top: 5%; left: 2%; }
+      .tag-data { top: 18%; right: 2%; }
+      .tag-entj { top: 38%; left: 2%; }
+      .tag-action { top: 51%; right: 2%; }
 
       .hero__photo {
         min-height: 460px;
@@ -463,9 +1444,35 @@
         gap: 2px;
       }
 
-      .skills {
-        grid-template-columns: 1fr;
-      }
+      .capabilities-section { padding-bottom: 72px; }
+      .capabilities-heading { margin-bottom: 42px; font-size: 15px; }
+      .capabilities-flow { gap: 58px; }
+      .capability-block { padding-top: 26px; }
+      .skill-group-grid,
+      .media-work-grid,
+      .award-grid { grid-template-columns: 1fr; }
+      .content-work__copy { position: static; transform: none; }
+      .works-head,
+      .media-head,
+      .awards-head { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .works-label { margin-top: 2px; }
+      .award-count + .award-count { margin-top: 20px; }
+      .lightbox { padding: 14px; }
+      .lightbox__dialog { max-height: calc(100vh - 28px); }
+      .lightbox__dialog--gallery { padding: 22px 14px 14px; }
+      .project-gallery { gap: 12px; }
+      .project-gallery__tip { font-size: 13px; }
+      .hero-actions { align-self: center; width: auto; }
+      .prompt-kit-entry { padding: 18px; }
+      .prompt-kit-entry__actions { align-items: stretch; flex-direction: column; }
+      .prompt-kit-button { flex: 1 1 210px; justify-content: center; }
+      .prompt-kit-modal { padding: 14px; }
+      .prompt-kit-dialog { max-height: calc(100vh - 28px); padding: 26px 18px 20px; }
+      .prompt-kit-close { top: 10px; right: 10px; width: 42px; height: 42px; }
+      .prompt-kit-dialog h2 { padding-right: 42px; }
+      .prompt-kit-actions { flex-direction: column; }
+      .prompt-kit-primary,
+      .prompt-kit-secondary { width: 100%; }
     }
   </style>
 </head>
@@ -475,148 +1482,742 @@
       <a class="brand" href="#top">连圣琪</a>
       <div class="nav__links">
         <a href="#internship">实习经历</a>
-        <a href="#campus">校园工作</a>
         <a href="#projects">项目经历</a>
-        <a href="#skills">技能奖项</a>
+        <a href="#campus">实践经历</a>
+        <a href="#skills">能力成果</a>
       </div>
     </nav>
 
     <section class="hero" id="top">
-      <div class="hero__copy">
-        <div class="eyebrow">随时到岗 / 每周 5 天 / 可全职实习 3 个月</div>
-        <h1>连圣琪</h1>
-        <p class="education-lines">北京科技大学&nbsp;&nbsp;能源与动力工程专业<br />保研至北京航空航天大学</p>
-        <div class="info-grid">
-          <span class="info-pill">电话 15234686054</span>
-          <a class="info-pill" href="mailto:15234686054@163.com">邮箱 15234686054@163.com</a>
-          <span class="info-pill">山西长治</span>
+      <div class="floating-tags" aria-label="个人标签">
+        <span class="floating-tag tag-vibe">✨ vibecoding</span>
+        <span class="floating-tag tag-data">📊 数据分析</span>
+        <span class="floating-tag tag-entj">🧭 ENTJ</span>
+        <span class="floating-tag tag-action">⚡ 行动力</span>
+      </div>
+      <div class="hero__copy reveal">
+        <div class="eyebrow">随时到岗 / 每周 5 天 / 可全职实习 6 个月</div>
+        <h1>Hi，我是连圣琪</h1>
+        <p class="education-lines">
+          <span>北京航空航天大学（硕士） · 能源动力</span>
+          <span>北京科技大学（本科） · 能源与动力工程</span>
+        </p>
+        <p class="hero-quote">“理解用户，看懂技术，推动 AI 产品真正落地”</p>
+        <div class="hero-contact-stack">
+          <div class="info-grid">
+            <span class="info-pill">电话 15234686054</span>
+            <a class="info-pill" href="mailto:15234686054@163.com">邮箱 15234686054@163.com</a>
+          </div>
+          <div class="hero-actions" aria-label="主页操作">
+            <a class="download-button" href="resume.pdf" download>
+              <span aria-hidden="true">↓</span>
+              下载简历
+            </a>
+          </div>
         </div>
       </div>
-      <figure class="hero__photo">
+      <figure class="hero__photo reveal" data-delay="1">
         <img src="profile-photo.jpg" alt="连圣琪证件照" />
       </figure>
     </section>
 
     <section class="section" id="internship">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="section-index">01 / EXPERIENCE</span>
         <h2>实习经历</h2>
       </div>
       <div class="timeline">
-        <div class="time">2026.02<br />2026.06</div>
-        <article class="item">
+        <div class="time time--logo reveal">
+          <span class="timeline-logo-frame timeline-logo-frame--kuaishou">
+            <img class="timeline-logo" src="kuaishou-logo.png" alt="" />
+          </span>
+          2026.02<br />2026.06
+        </div>
+        <article class="item reveal" data-delay="1">
           <div class="item__top"><span>快手 · 直播业务部</span><span>产品运营实习生</span></div>
-          <p>直播业务部聚焦<strong>主播拉新、留存与增长</strong>，拉新方向全渠道累计新增主播约 <strong>4w</strong>；实习期间聚焦用户裂变渠道，关注新增主播 <strong>DAU</strong>、营收贡献与转化。</p>
+          <p>担任<strong>「裂变」拉新渠道项目 Owner</strong>，围绕新回主播营收与 <strong>DAU 增长</strong>目标，从 <strong>0-1</strong> 负责老带新玩法的落地、运营与迭代。</p>
           <ul>
-            <li><strong>裂变链路优化</strong>：针对被邀请主播需手动填写邀请码、路径长且易错填的问题，提出并推动“点击接受邀请”方案落地，实现邀请关系自动绑定，邀约成功率提升 <strong>14%</strong>。</li>
-            <li><strong>资源位投放优化</strong>：主导 <strong>CMS 资源位运营</strong>，基于用户点击偏好与活动核心卖点，利用 <strong>ChatGPT 与 Prompt</strong> 快速生成多版视觉图片，点击率提升 <strong>78%</strong>，开播率提升 <strong>11%</strong>。</li>
-            <li><strong>Agent 提效建设</strong>：利用 <strong>Codeflicker 和 Klaw</strong> 搭建拉新数据自动回流与健康度监控流程，覆盖 <strong>4 个渠道、5 个核心指标</strong>，沉淀 <strong>2 套可复用 Skills</strong>。</li>
+            <li><strong>裂变链路优化：</strong>针对被邀请主播需手动填写邀请码、操作路径长且易错填的问题，提出并推进“点击接受邀请 - 邀请关系自动绑定”方案落地；经 AB 实验对比，<strong>邀约成功率 31.05% -> 43.47%</strong>，带动 <strong>DAU 提升 32%</strong>。</li>
+            <li><strong>Agent 提效建设：</strong>利用 <strong>Codeflicker 和 Klaw</strong> 搭建拉新数据自动回流与健康度监控流程，覆盖 <strong>4 个渠道、5 个核心指标</strong>，沉淀 <strong>2 套可复用 Skills</strong>，提升数据更新与异常定位效率。</li>
+            <li><strong>资源位投放优化：</strong>基于用户点击偏好和活动核心卖点，利用<strong>生成式 AI</strong>快速产出并筛选多版本视觉素材，协同设计及运营完成 CMS 资源位配置与持续迭代，<strong>点击率提升 78.12%</strong>、<strong>开播率提升 11.87%</strong>。</li>
           </ul>
           <div class="metric-row">
-            <span class="metric">新增主播约 4w</span>
-            <span class="metric">邀约成功率 +14%</span>
-            <span class="metric">点击率 +78%</span>
-            <span class="metric">开播率 +11%</span>
+            <span class="metric">DAU +32%</span>
+            <span class="metric">邀约成功率 31.05% -> 43.47%</span>
+            <span class="metric">点击率 +78.12%</span>
+            <span class="metric">开播率 +11.87%</span>
           </div>
         </article>
 
-        <div class="time">2025.07<br />2025.08</div>
-        <article class="item">
+        <div class="time time--logo reveal">
+          <span class="timeline-logo-frame timeline-logo-frame--ma-steel">
+            <img class="timeline-logo" src="ma-steel-logo.png" alt="" />
+          </span>
+          2025.07<br />2025.08
+        </div>
+        <article class="item reveal" data-delay="1">
           <div class="item__top"><span>马鞍山钢铁股份有限公司</span><span>能耗数据分析实习生</span></div>
           <ul>
             <li>深入钢铁生产线与中央控制室，系统学习钢铁长流程以及现代钢材的工艺环节。</li>
             <li>跟踪并记录炼铁工序<strong>实时生产数据</strong>，分析<strong>设备效率与能耗关联</strong>；撰写 <strong>3 份</strong>周度生产运行效率简报。</li>
           </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="campus">
-      <div class="section-head">
-        <span class="section-index">02 / CAMPUS</span>
-        <h2>校园工作经历</h2>
-      </div>
-      <div class="timeline">
-        <div class="time">2024.03<br />2025.02</div>
-        <article class="item">
-          <div class="item__top"><span>北京科技大学校团委青年文体活动中心</span><span>艺术团联络组组长</span></div>
-          <ul>
-            <li>参与近 <strong>20 场</strong>大型文体活动的策划与举办，如迎新晚会、舞蹈团及话剧团专场演出、“高雅艺术进校园”系列演出等，负责<strong>方案构思、流程设计、前期准备及现场安排</strong>。</li>
-            <li>统筹<strong>志愿者招募与任务分配</strong>，累计组织志愿者近 <strong>500 人</strong>；协调参演社团及个人超 <strong>200 名</strong>。</li>
-            <li>负责观众组织与现场管理，单场活动最高观众规模达 <strong>3500 人</strong>。</li>
-          </ul>
           <div class="metric-row">
-            <span class="metric">近 20 场活动</span>
-            <span class="metric">500 名志愿者</span>
-            <span class="metric">200+ 参演人员</span>
-            <span class="metric">3500 人单场观众</span>
+            <span class="metric">实时生产数据跟踪</span>
+            <span class="metric">设备效率与能耗分析</span>
+            <span class="metric">3 份周度简报</span>
           </div>
         </article>
       </div>
     </section>
 
     <section class="section" id="projects">
-      <div class="section-head">
-        <span class="section-index">03 / PROJECTS</span>
+      <div class="section-head reveal">
+        <span class="section-index">02 / PROJECTS</span>
         <h2>项目经历</h2>
       </div>
       <div class="timeline">
-        <div class="time">2025.04<br />2025.08</div>
-        <article class="item">
-          <div class="item__top"><span>基于花鼓发电的水循环温控自行车坐垫设计</span><span>队长</span></div>
-          <p>负责<strong>系统整体技术方案设计</strong>，将骑行动能转化为电力，驱动半导体与水循环温控模块，实现坐垫表面降温与附属冷饮功能；利用 <strong>Solidworks</strong> 完成 <strong>3D 建模</strong>，<strong>Ansys</strong> 完成热力学仿真，优化能量收集与散热效率。</p>
+        <div class="time reveal">2026.05<br />2026.06</div>
+        <article class="item reveal" data-delay="1">
+          <div class="item__top"><span>多 Agent 协作式 AI 学术研究助手 | Python</span><span>个人项目</span></div>
+          <ul>
+            <li><strong>系统搭建：</strong>独立设计并上线多 Agent 协作 AI 学术助手，基于 <strong>Streamlit</strong> 搭建交互界面，设置研究顾问、文献检索、学术写作、质量评审 <strong>4 类专职 Agent</strong>，通过消息总线实现任务分解与结果融合，支持主题解释、综述生成、技术路线等 <strong>6 类学术任务</strong>。</li>
+            <li><strong>流程设计：</strong>设计“<strong>快速协同 / 深度研讨</strong>”双模式；深度模式触发多 Agent 多轮质询 - 修订闭环，替代原线性流程，提升复杂任务逻辑严密性。</li>
+            <li><strong>功能建设：</strong>构建本地 <strong>JSON 知识库</strong>与 Agent 共享记忆，支持对话展示、思考链追踪、日志保存及中间过程可视化。</li>
+            <li><strong>效果评测：</strong>搭建 <strong>5 类测试任务</strong>进行对比评测，标准模式平均质量评分提升 <strong>25%（22.4 -> 28.0）</strong>。</li>
+          </ul>
           <div class="metric-row">
-            <span class="metric">Solidworks</span>
-            <span class="metric">Ansys</span>
-            <span class="metric">制冷空调行业大学生科技竞赛二等奖</span>
+            <span class="metric">4 类专职 Agent</span>
+            <span class="metric">6 类学术任务</span>
+            <span class="metric">质量评分 +25%</span>
           </div>
         </article>
 
-        <div class="time">2025.03<br />2025.06</div>
-        <article class="item">
-          <div class="item__top"><span>虹吸绿色屋顶协同 TENG 自供能的雨水回用系统</span><span>队长</span></div>
-          <p>设计集成<strong>屋顶绿化、虹吸雨水收集与自供能技术</strong>的系统，实现建筑节水与能耗降低；负责技术可行性分析与效益评估，可使空调能耗降低 <strong>17.29%</strong>，年节水超 <strong>1200m3</strong>，并利用 <strong>Origin</strong> 进行数据可视化处理。</p>
+        <div class="time reveal">2026.03<br />2026.06</div>
+        <article class="item reveal" data-delay="1">
+          <div class="item__top"><span>二维 h-BN 过渡层调控 Cu/diamond 界面热阻的分子动力学研究</span><span>优秀毕业设计</span></div>
+          <ul>
+            <li><strong>建模仿真：</strong>基于 <strong>LAMMPS</strong> 构建 Cu/n-layer h-BN/diamond 界面模型，引入 <strong>Agent Automatic Research</strong> 框架实现参数空间自主探索；Agent 自动设计层数 / 转角变量组合，执行 NEMD 模拟、实时分析热流密度与温度跳跃，并根据中间结果动态调整后续采样策略，形成“设计 - 执行 - 评估 - 优化”闭环。</li>
+            <li><strong>数据分析：</strong>利用 <strong>Python / Origin</strong> 完成温度分布拟合、热输运参数提取及声子态密度（PDoS）分析，Agent 自动识别异常数据并触发复重算或补充采样。</li>
+            <li><strong>结果产出：</strong><strong>3 层 h-BN</strong> 使界面热导提升约 <strong>154.8%</strong>、界面热阻降低约 <strong>60.7%</strong>；同时验证了 Agent 自主优化框架在材料模拟参数寻优中的可行性。</li>
+          </ul>
           <div class="metric-row">
-            <span class="metric">空调能耗 -17.29%</span>
-            <span class="metric">年节水超 1200m3</span>
-            <span class="metric">北京市节能节水低碳减排竞赛二等奖</span>
+            <span class="metric">界面热导 +154.8%</span>
+            <span class="metric">界面热阻 -60.7%</span>
+            <span class="metric">LAMMPS / Python / Origin</span>
           </div>
-        </article>
-
-        <div class="time">2022.11<br />2023.12</div>
-        <article class="item">
-          <div class="item__top"><span>校级本科生科研项目 SRTP - 氢能储存发展调研</span><span>队员</span></div>
-          <p>系统调研不同储氢技术的原理、优缺点与应用现状，聚焦<strong>固态储氢材料</strong>如金属氢化物、MOFs 等的技术发展与瓶颈；独立完成固态储氢板块<strong>资料收集、分析对比与报告撰写</strong>，项目已通过学校审批结项。</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="skills">
-      <div class="section-head">
-        <span class="section-index">04 / SKILLS</span>
-        <h2>技能与奖项</h2>
+    <section class="section" id="campus">
+      <div class="section-head reveal">
+        <span class="section-index">03 / PRACTICE</span>
+        <h2>实践经历</h2>
       </div>
-      <div class="skills">
-        <div class="skill-card">
-          <h3>工具能力</h3>
-          <p>精通 Office 办公软件、SQL、Python、Lammps；掌握 Figma、PS、Solidworks、Matlab。</p>
-        </div>
-        <div class="skill-card">
-          <h3>运营与表达</h3>
-          <p>具备自媒体运营经验、活动策划经验与主持能力，擅长复盘、组织协调和跨角色沟通。</p>
-        </div>
-        <div class="skill-card">
-          <h3>语言能力</h3>
-          <p>CET-6，能阅读英文资料并进行基础业务沟通。</p>
-        </div>
-        <div class="skill-card">
-          <h3>荣誉奖项</h3>
-          <p>国家级奖项 2 项、省部级奖项 4 项、校级奖项 10 余项；优秀毕业生、优秀毕业论文、国家一等奖学金等。</p>
-        </div>
+      <div class="timeline">
+        <div class="time reveal">2024.03<br />2025.02</div>
+        <article class="item reveal" data-delay="1">
+          <div class="item__top"><span>北京科技大学校团委青年文体活动中心</span><span>副主任</span></div>
+          <ul>
+            <li>参与近 <strong>20 场</strong>大型文体活动的策划与举办，如迎新晚会、舞蹈团及话剧团专场演出、“高雅艺术进校园”系列演出等，负责<strong>方案构思、流程设计、前期准备及现场安排</strong>。</li>
+            <li><strong>组织协调：</strong>统筹志愿者招募与任务分配，累计组织志愿者近 <strong>500 人</strong>；协调参演社团及个人超 <strong>200 名</strong>，同时负责观众组织与现场管理，单场活动最高观众规模达 <strong>3500 人</strong>。</li>
+          </ul>
+          <div class="metric-row">
+            <span class="metric">近 20 场活动</span>
+            <span class="metric">近 500 名志愿者</span>
+            <span class="metric">超 200 名参演人员</span>
+            <span class="metric">单场 3500 人</span>
+          </div>
+        </article>
+
+        <div class="time reveal">2022.09<br />至今</div>
+        <article class="item reveal" data-delay="1">
+          <div class="item__top"><span>自媒体账号运营</span><span>个人</span></div>
+          <ul>
+            <li><strong>个人 IP 规划：</strong>结合发展经历深挖“保研”“实习”等话题，捕捉热点话题，已初步达成校园达人账号。</li>
+            <li><strong>爆款内容输出：</strong>单平台发布视频单篇最高浏览量 <strong>100w+</strong>，穿搭话题单篇浏览量 <strong>22w+</strong>，Vlog 单篇浏览量 <strong>9w+</strong>。</li>
+          </ul>
+          <div class="metric-row">
+            <span class="metric">单篇最高浏览 100w+</span>
+            <span class="metric">穿搭话题 22w+</span>
+            <span class="metric">Vlog 9w+</span>
+          </div>
+        </article>
       </div>
+    </section>
+
+    <section class="section capabilities-section" id="skills">
+      <div class="section-head reveal">
+        <span class="section-index">04 / CAPABILITIES &amp; WORKS</span>
+        <h2>能力与成果</h2>
+      </div>
+      <p class="capabilities-heading reveal" data-delay="1">从需求分析到原型落地，用产品思维和 AI 工具解决真实问题。</p>
+      <div class="capabilities-flow" id="capabilities-root"></div>
     </section>
 
     <footer>连圣琪 · 个人展示简历网页</footer>
   </main>
+  <script>
+    const capabilitiesData = {
+      skills: [
+        { name: "产品与运营", tags: ["需求分析", "竞品分析", "产品方案", "原型设计", "数据复盘", "活动策划"] },
+        { name: "AI 应用", tags: ["Prompt", "大模型 API", "Agent", "Workflow", "Vibe Coding", "AI 产品评测"] },
+        { name: "数据与工具", tags: ["Python", "SQL", "Figma", "Axure", "Office", "剪映"] },
+        { name: "表达与协作", tags: ["内容策划", "自媒体运营", "文案表达", "主持表达", "跨角色沟通", "项目推进"] }
+      ],
+      aiProjects: [
+        {
+          name: "AI 学术研究助手",
+          description: "面向科研场景的多智能体 AI 助手，支持主题解释、综述生成、技术路线等",
+          descriptionHighlight: "6 类学术任务",
+          role: "需求分析 / 产品设计 / Prompt 设计 / Workflow 编排 / 独立开发",
+          highlights: "支持标准 / 快速模式切换、任务类型选择、系统处理过程可视化与结构化结果输出。",
+          tags: ["Multi-Agent", "Prompt", "Workflow", "Streamlit", "AI Evaluation"],
+          image: "images/ai-works/ai-research-assistant-cover.png",
+          imageVariant: "square",
+          coverUrl: "https://app-kgcpaqexihcuqjfakr2vpu.streamlit.app/",
+          demoUrl: "https://app-kgcpaqexihcuqjfakr2vpu.streamlit.app/",
+          demoLabel: "立即体验",
+          demoHint: "温馨提示：本项目使用付费 API，调用额度有限，请合理体验，避免频繁请求或转发使用。",
+          placeholder: "AI 项目封面 01",
+          featured: true,
+          detailUrl: ""
+        },
+        {
+          name: "个人主页",
+          description: "通过 Vibe Coding 从 0 到 1 设计并开发的个人作品展示网站。",
+          role: "信息架构 / 页面设计 / 前端开发 / 内容策划",
+          tags: ["Vibe Coding", "Web Design", "Codex", "Responsive"],
+          image: "images/ai-works/personal-homepage-cover.png",
+          placeholder: "AI 项目封面 02",
+          coverUrl: "https://liansq1.github.io/resume/",
+          detailUrl: "",
+          demoUrl: ""
+        },
+        {
+          name: "AI 科研视觉工作室",
+          status: "AI 微创业实践 · MVP 探索中",
+          description: "面向科研场景，探索 AI 在科研绘图、学术 PPT 与封面设计中的产品化应用。",
+          services: ["科研绘图", "学术 PPT", "封面设计"],
+          role: "需求分析 / 服务设计 / Prompt 设计 / AI Workflow / 视觉方案制作",
+          tags: ["AI 微创业", "服务设计", "AI Workflow", "科研视觉"],
+          image: "images/ai-works/project-03-cover.png",
+          imageVariant: "studio",
+          placeholder: "AI 科研视觉工作室项目封面",
+          kind: "studio",
+          previewLabel: "查看项目 →",
+          gallery: [
+            "images/ai-works/research-visual-studio-showcase.png"
+          ],
+          galleryTip: "为保护委托方隐私及项目信息，本页面仅展示部分经授权或脱敏处理的代表性作品。"
+        }
+      ],
+      awardStats: [
+        { number: "2", label: "项国家级奖项" },
+        { number: "4", label: "项省部级奖项" },
+        { number: "10+", label: "项校级奖项" }
+      ],
+      awards: [
+        { name: "国家级学金", tone: "sage", size: "large" },
+        { name: "人民三等奖学金", tone: "lime", size: "medium" },
+        { name: "本科 2022 级新生人民三等奖学金", tone: "yellow", size: "large" },
+        { name: "优秀毕业生", tone: "moss", size: "small" },
+        { name: "优秀毕业论文（设计）", tone: "sage", size: "medium" },
+        { name: "优秀学生干部", tone: "lime", size: "small" },
+        { name: "优秀共青团干部", tone: "yellow", size: "medium" },
+        { name: "优秀宿舍长", tone: "moss", size: "small" },
+        { name: "十佳主持人", tone: "sage", size: "medium" },
+        { name: "“汉钟精机杯”第十九届中国制冷空调行业大学生科技竞赛二等奖", tone: "lime", size: "large" },
+        { name: "第七届北京市大学生节能节水低碳减排社会实践与科技竞赛二等奖", tone: "yellow", size: "large" },
+        { name: "中国国际大学生创新大赛（2025）北京赛区“青年红色筑梦之旅”赛道三等奖", tone: "moss", size: "large" },
+        { name: "“青创北京”2025 年“挑战杯”首都大学生课外学术科技作品竞赛三等奖", tone: "sage", size: "large" },
+        { name: "北京科技大学第七届废物利用设计大赛第二十五届“摇篮创意赛”一等奖", tone: "lime", size: "large" },
+        { name: "北京科技大学第十七届节能减排社会实践与科技竞赛", tone: "yellow", size: "medium" },
+        { name: "北京科技大学暑期社会实践银奖", tone: "moss", size: "medium" }
+      ]
+    };
+
+    const promptKitConfig = {
+      status: "published",
+      eyebrow: "PERSONAL HOMEPAGE PROMPT KIT",
+      title: "用 AI 生成你的个人主页",
+      description: "这套 Prompt 将当前主页作为固定视觉模板。你只需要提供自己的简历、照片和项目素材，AI 就会完成信息提取、内容替换、素材更新与排版适配，生成属于你的个人主页。",
+      steps: [
+        {
+          index: "01",
+          title: "个人主页生成 Prompt",
+          description: "指导 AI 读取简历，并在现有模板中完成内容映射、素材替换和页面适配。",
+          status: "可直接使用"
+        },
+        {
+          index: "02",
+          title: "素材准备清单",
+          description: "准备个人简历、证件照、项目封面、作品截图、简历 PDF 和有效项目链接。",
+          status: "建议提前准备"
+        },
+        {
+          index: "03",
+          title: "AI 编程使用说明",
+          description: "适用于 Codex、Claude Code 或 Cursor，并支持通过截图反馈持续迭代。",
+          status: "持续更新"
+        }
+      ],
+      promptContent: `请直接修改当前个人主页模板项目，根据我提供的简历、个人照片和项目素材，生成一份属于我的个人主页。
+
+当前项目已经包含完整的页面设计、配色、排版、响应式布局和交互效果。请将它作为固定模板使用，重点完成内容提取、信息映射、素材替换和局部排版适配，不要重新设计整个网站。
+
+在开始修改前，请先检查：
+1. 当前项目使用的技术栈和目录结构
+2. 首页 Hero 区域
+3. 实习经历、项目经历和实践经历模块
+4. AI 作品集或个人作品模块
+5. 能力、技能与奖项模块
+6. 图片、简历 PDF 和其他静态资源路径
+7. 弹窗、滚动动画和响应式样式
+8. 当前模板中所有属于原主页作者的个人信息
+
+然后读取并分析我提供的简历，提取姓名、求职方向、联系电话、邮箱、所在地、到岗时间、教育背景、实习或工作经历、项目经历、校园及社会实践经历、专业技能、AI 工具与技术能力、获奖经历、个人作品链接，以及关键成果、数据和业务指标。
+
+一、内容替换规则
+删除模板中原作者的姓名、电话、邮箱、教育背景、经历、项目、奖项、照片和相关介绍，替换为我简历中的真实内容，不得残留原作者信息。
+
+不得虚构我没有提供的公司、项目、技能、数据、奖项或链接。如果某项信息没有提供，不要显示“待补充”或“Coming Soon”，不要使用无效占位内容；可以隐藏对应字段或整个模块，并在完成后列出仍需补充的信息。
+
+二、首页 Hero 区域
+展示我的姓名、简洁问候语、教育背景、电话、邮箱、到岗状态、个人照片和下载简历按钮。只有当简历中有明确职业定位时，才提炼一句基于事实的个人主张，不要写空泛或夸张的宣传语。
+
+将我提供的个人照片替换到证件照位置，将 PDF 简历放入项目资源目录，并确保下载按钮可以正常使用。
+
+三、经历模块
+按照实习或工作经历、项目经历、校园或社会实践经历、能力与成果的顺序组织内容。
+
+每段经历提取时间、组织名称、岗位或角色、工作背景、具体行动、最终成果和关键数据。优先使用“背景—行动—结果”的结构，在不改变事实的前提下精简长段落。
+
+适度加粗项目角色、业务目标、产品或运营动作、技术工具、关键指标、百分比和增长结果，但不要把全部文字加粗。
+
+四、项目与作品模块
+将代表性项目整理成项目卡片。卡片可包含项目名称、简介、状态、个人职责、项目亮点、技术方法、标签、封面和真实项目链接。
+
+只有在我提供有效链接时才显示跳转按钮，不要使用“#”或无效链接。将项目截图和封面复制到项目资源目录并正确引用。涉及隐私的项目可以显示：“为保护委托方隐私及项目信息，本页面仅展示部分经授权或脱敏处理的代表性作品。”
+
+五、技能与奖项模块
+根据简历实际内容整理技能分类，例如产品与运营、AI 应用、数据分析、设计与开发、内容表达和组织协作，不要机械保留模板原有分类。
+
+奖项使用文字标签展示，不使用虚假的奖状图片。奖项较多时可以使用不同尺寸的浅绿色、黄绿色标签墙。
+
+六、视觉与排版要求
+保留模板现有的浅黄色与浅绿色视觉体系、网格背景、卡片样式、字体体系、时间轴、按钮、滚动动画、项目弹窗和响应式布局。
+
+允许根据内容长度调整模块高度、文字宽度、字号、行距、卡片排列和时间轴间距，也可以隐藏没有内容的模块。不要为了塞入文字而把字号缩得过小。
+
+七、功能与验收
+完成后检查下载简历、邮箱链接、项目链接、项目封面、弹窗关闭、Escape 键、图片路径、滚动动画和响应式布局。至少检查 1440px、1024px、768px 和 390px 宽度，确保没有横向滚动条、无效链接、占位信息或原作者残留内容。
+
+请先读取简历和当前项目，再直接完成修改，不要只给出建议。信息足够时自行完成内容映射和排版；只有缺少姓名、联系方式、照片、简历文件或关键链接时，才提出简短问题。
+
+完成后说明修改了哪些文件、替换了哪些信息、新增了哪些资源、隐藏了哪些模块、仍需补充哪些内容，以及如何本地预览和发布到 GitHub Pages。`,
+      downloadPath: "personal-homepage-prompt-kit.md",
+      publishNotice: "建议先准备简历、个人照片、项目素材和有效链接。AI 很难一次生成完全满意的页面，请通过截图和具体修改要求持续迭代。",
+      events: {
+        open: "prompt_kit_open",
+        close: "prompt_kit_close",
+        previewClick: "prompt_kit_preview_click"
+      }
+    };
+
+    function createMediaFrame({ image, placeholder, variant, alt, eager = false }) {
+      const frame = document.createElement("div");
+      frame.className = `media-frame media-frame--${variant} is-fallback`;
+      const fallback = document.createElement("span");
+      fallback.className = "media-fallback";
+      fallback.textContent = placeholder;
+      const img = document.createElement("img");
+      img.src = image;
+      img.alt = alt;
+      img.loading = eager ? "eager" : "lazy";
+      img.addEventListener("load", () => frame.classList.remove("is-fallback"));
+      img.addEventListener("error", () => frame.classList.add("is-fallback"));
+      frame.append(fallback, img);
+      return frame;
+    }
+
+    function createTagList(tags) {
+      const list = document.createElement("div");
+      list.className = "tag-list";
+      tags.forEach((tag) => {
+        const item = document.createElement("span");
+        item.className = "cap-tag";
+        item.textContent = tag;
+        list.append(item);
+      });
+      return list;
+    }
+
+    function createTextButton(label, href) {
+      const button = document.createElement("a");
+      button.className = "text-button";
+      button.href = href;
+      button.textContent = label;
+      return button;
+    }
+
+    function createPromptKitEntry() {
+      const entry = document.createElement("aside");
+      entry.className = "prompt-kit-entry";
+      entry.innerHTML = `
+        <p class="prompt-kit-lead">喜欢这个主页风格？</p>
+        <div class="prompt-kit-entry__actions">
+          <button class="prompt-kit-button" type="button" id="prompt-kit-trigger" aria-haspopup="dialog" aria-controls="prompt-kit-modal">
+            <span aria-hidden="true">✨</span>
+            获取同款 Prompt
+            <span class="prompt-kit-button__arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="prompt-kit-note">适用于 Codex、Claude Code 与 Cursor，包含模板复用 Prompt、素材清单和使用说明。</p>
+        </div>`;
+      return entry;
+    }
+
+    function renderCapabilities() {
+      const root = document.getElementById("capabilities-root");
+      if (!root) return;
+
+      const skillsBlock = document.createElement("section");
+      skillsBlock.className = "capability-block capability-split reveal";
+      skillsBlock.innerHTML = `
+        <div class="capability-intro">
+          <span class="capability-kicker">01 / CORE SKILLS</span>
+          <h3>核心技能</h3>
+          <p>围绕 AI 产品设计、项目落地和内容表达持续积累能力。</p>
+          <span class="intro-label">AI 产品 / Vibe Coding / 内容运营</span>
+        </div>
+        <div class="skill-group-grid" aria-label="核心技能分组"></div>`;
+      const skillGrid = skillsBlock.querySelector(".skill-group-grid");
+      capabilitiesData.skills.forEach((group) => {
+        const card = document.createElement("article");
+        card.className = "skill-group";
+        const title = document.createElement("h4");
+        title.textContent = group.name;
+        card.append(title, createTagList(group.tags));
+        skillGrid.append(card);
+      });
+      root.append(skillsBlock);
+
+      const worksBlock = document.createElement("section");
+      worksBlock.className = "capability-block reveal";
+      worksBlock.innerHTML = `
+        <div class="works-head">
+          <div><h3 class="works-title">AI 作品集</h3><p class="works-subtitle">把想法快速验证成可以体验、可以迭代的 AI 产品原型。</p></div>
+          <span class="works-label">Selected Works</span>
+        </div>
+        <div class="project-grid" aria-label="AI 作品集"></div>`;
+      const projectGrid = worksBlock.querySelector(".project-grid");
+      capabilitiesData.aiProjects.forEach((project, projectIndex) => {
+        const card = document.createElement("article");
+        card.className = `project-card${project.featured ? " project-card--featured" : ""}${project.kind ? ` project-card--${project.kind}` : ""}`;
+        const cover = createMediaFrame({ image: project.image, placeholder: project.placeholder, variant: project.imageVariant || (project.featured ? "wide" : "regular"), alt: `${project.name} 项目封面`, eager: project.featured });
+        if (project.coverUrl) {
+          const coverLink = document.createElement("a");
+          coverLink.className = "project-cover-link";
+          coverLink.href = project.coverUrl;
+          coverLink.target = "_blank";
+          coverLink.rel = "noreferrer";
+          coverLink.setAttribute("aria-label", `打开${project.name} Demo`);
+          coverLink.append(cover);
+          card.append(coverLink);
+        } else if (project.gallery?.length) {
+          const coverButton = document.createElement("button");
+          coverButton.type = "button";
+          coverButton.className = "project-cover-button";
+          coverButton.dataset.projectIndex = projectIndex;
+          coverButton.setAttribute("aria-label", `查看${project.name}项目作品`);
+          coverButton.append(cover);
+          card.append(coverButton);
+        } else {
+          card.append(cover);
+        }
+        const body = document.createElement("div");
+        body.className = "project-card__body";
+        const summary = project.descriptionHighlight
+          ? `<p class="project-summary">${project.description}<strong>${project.descriptionHighlight}</strong>。</p>`
+          : `<p class="project-summary">${project.description}</p>`;
+        const services = project.services?.length
+          ? `<div class="project-services" aria-label="项目服务">${project.services.map((service) => `<span class="project-service-tag">${service}</span>`).join("")}</div>`
+          : "";
+        const details = [
+          project.role ? `<div class="project-detail"><span class="project-detail__label">个人职责</span><strong class="project-detail__content">${project.role}</strong></div>` : "",
+          project.highlights ? `<div class="project-detail"><span class="project-detail__label">项目亮点</span><strong class="project-detail__content">${project.highlights}</strong></div>` : ""
+        ].join("");
+        body.innerHTML = `${project.status ? `<span class="project-status">${project.status}</span>` : ""}<h4>${project.name}</h4>${summary}${services}${details}`;
+        body.append(createTagList(project.tags));
+        const actions = document.createElement("div");
+        actions.className = "card-actions";
+        if (project.detailUrl) actions.append(createTextButton("查看详情", project.detailUrl));
+        if (project.demoUrl) {
+          const demoButton = createTextButton(project.demoLabel || "访问 Demo", project.demoUrl);
+          demoButton.target = "_blank";
+          demoButton.rel = "noreferrer";
+          actions.append(demoButton);
+        }
+        if (project.previewLabel) {
+          const previewButton = document.createElement("button");
+          previewButton.type = "button";
+          previewButton.className = "text-button project-preview-button";
+          previewButton.textContent = project.previewLabel;
+          previewButton.dataset.projectIndex = projectIndex;
+          actions.append(previewButton);
+        }
+        if (actions.childElementCount) body.append(actions);
+        if (project.demoHint) {
+          const note = document.createElement("p");
+          note.className = "project-experience-note";
+          note.textContent = project.demoHint;
+          body.append(note);
+        }
+        card.append(body);
+        projectGrid.append(card);
+      });
+      worksBlock.append(createPromptKitEntry());
+      root.append(worksBlock);
+
+      const awardsBlock = document.createElement("section");
+      awardsBlock.className = "capability-block reveal";
+      awardsBlock.innerHTML = `
+        <div class="awards-head"><div><h3 class="awards-title">荣誉奖项</h3><p class="awards-subtitle">一些阶段性的认可，也是持续前进的记录。</p></div></div>
+        <div class="awards-layout"><div class="award-summary"></div><div class="award-tag-wall" aria-label="奖项列表"></div></div>`;
+      const summary = awardsBlock.querySelector(".award-summary");
+      capabilitiesData.awardStats.forEach(({ number, label }) => {
+        const item = document.createElement("div");
+        item.className = "award-count";
+        item.innerHTML = `<strong>${number}</strong><span>${label}</span>`;
+        summary.append(item);
+      });
+      const note = document.createElement("p");
+      note.className = "award-note";
+      note.textContent = "包括优秀毕业生、优秀毕业论文及各类竞赛与奖学金荣誉。";
+      summary.append(note);
+      const awardTagWall = awardsBlock.querySelector(".award-tag-wall");
+      capabilitiesData.awards.forEach((award) => {
+        const tag = document.createElement("span");
+        tag.className = `award-tag award-tag--${award.tone} award-tag--${award.size}`;
+        tag.textContent = award.name;
+        awardTagWall.append(tag);
+      });
+      root.append(awardsBlock);
+    }
+
+    const lightbox = document.createElement("div");
+    lightbox.className = "lightbox";
+    lightbox.hidden = true;
+    lightbox.innerHTML = '<div class="lightbox__dialog" role="dialog" aria-modal="true" aria-label="奖状图片预览"><button class="lightbox__close" type="button" aria-label="关闭预览">×</button></div>';
+    document.body.append(lightbox);
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightbox.querySelector(".lightbox__dialog").classList.remove("lightbox__dialog--gallery");
+    }
+
+    function openMediaLightbox(image, label) {
+      const dialog = lightbox.querySelector(".lightbox__dialog");
+      dialog.classList.remove("lightbox__dialog--gallery");
+      dialog.querySelectorAll(".media-frame").forEach((frame) => frame.remove());
+      dialog.querySelectorAll(".project-gallery").forEach((gallery) => gallery.remove());
+      dialog.setAttribute("aria-label", `${label}预览`);
+      dialog.append(createMediaFrame({ image, placeholder: label, variant: "award", alt: label }));
+      lightbox.hidden = false;
+      lightbox.querySelector(".lightbox__close").focus();
+    }
+
+    function openProjectGallery(project) {
+      const dialog = lightbox.querySelector(".lightbox__dialog");
+      dialog.classList.add("lightbox__dialog--gallery");
+      dialog.querySelectorAll(".media-frame, .project-gallery").forEach((node) => node.remove());
+      dialog.setAttribute("aria-label", `${project.name}项目作品预览`);
+
+      const gallery = document.createElement("section");
+      gallery.className = "project-gallery";
+      const header = document.createElement("div");
+      header.className = "project-gallery__head";
+      header.innerHTML = `<p class="project-gallery__eyebrow">Selected Works</p><h2 class="project-gallery__title">${project.name}</h2>`;
+      const grid = document.createElement("div");
+      grid.className = "project-gallery__grid";
+      project.gallery.forEach((image, index) => {
+        const figure = document.createElement("figure");
+        figure.className = "project-gallery__item";
+        const img = document.createElement("img");
+        img.src = image;
+        img.alt = `${project.name}代表作品 ${index + 1}`;
+        img.loading = index === 0 ? "eager" : "lazy";
+        figure.append(img);
+        grid.append(figure);
+      });
+      const tip = document.createElement("p");
+      tip.className = "project-gallery__tip";
+      tip.textContent = project.galleryTip;
+      gallery.append(header, grid, tip);
+      dialog.append(gallery);
+      lightbox.hidden = false;
+      lightbox.querySelector(".lightbox__close").focus();
+    }
+
+    function createPromptKitPreviewItem(step) {
+      const item = document.createElement("article");
+      item.className = "prompt-kit-preview";
+      item.innerHTML = `
+        <span class="prompt-kit-preview__index">${step.index}</span>
+        <h3>${step.title}</h3>
+        <p>${step.description}</p>
+        <span class="prompt-kit-status">${step.status}</span>`;
+      return item;
+    }
+
+    function createPromptKitModal(config) {
+      const modal = document.createElement("div");
+      modal.className = "prompt-kit-modal";
+      modal.id = "prompt-kit-modal";
+      modal.hidden = true;
+      modal.dataset.status = config.status;
+      modal.innerHTML = `
+        <section class="prompt-kit-dialog" role="dialog" aria-modal="true" aria-labelledby="prompt-kit-title" tabindex="-1">
+          <button class="prompt-kit-close" type="button" aria-label="暂时不用，关闭 Prompt Kit">×</button>
+          <span class="prompt-kit-kicker">${config.eyebrow}</span>
+          <h2 id="prompt-kit-title">${config.title}</h2>
+          <p class="prompt-kit-description">${config.description}</p>
+          <div class="prompt-kit-preview-grid" aria-label="Prompt Kit 内容"></div>
+          <details class="prompt-kit-content">
+            <summary>查看完整 Prompt</summary>
+            <pre></pre>
+          </details>
+          <p class="prompt-kit-notice">${config.publishNotice}</p>
+          <p class="prompt-kit-feedback" aria-live="polite"></p>
+          <div class="prompt-kit-actions">
+            <button class="prompt-kit-primary" type="button">复制完整 Prompt</button>
+            <button class="prompt-kit-secondary" type="button">下载 Markdown 指南</button>
+          </div>
+        </section>`;
+      const previewGrid = modal.querySelector(".prompt-kit-preview-grid");
+      config.steps.forEach((step) => previewGrid.append(createPromptKitPreviewItem(step)));
+      modal.querySelector(".prompt-kit-content pre").textContent = config.promptContent;
+      document.body.append(modal);
+      return modal;
+    }
+
+    function trackPromptKitEvent(eventName) {
+      document.dispatchEvent(new CustomEvent("prompt-kit-event", { detail: { eventName } }));
+    }
+
+    renderCapabilities();
+
+    const promptKitModal = createPromptKitModal(promptKitConfig);
+    const promptKitTrigger = document.getElementById("prompt-kit-trigger");
+    const promptKitDialog = promptKitModal.querySelector(".prompt-kit-dialog");
+    const promptKitCloseButton = promptKitModal.querySelector(".prompt-kit-close");
+    const promptKitFeedback = promptKitModal.querySelector(".prompt-kit-feedback");
+    const promptKitCopyButton = promptKitModal.querySelector(".prompt-kit-primary");
+    const promptKitDownloadButton = promptKitModal.querySelector(".prompt-kit-secondary");
+    let promptKitLastTrigger = null;
+
+    function getPromptKitFocusableElements() {
+      return [...promptKitModal.querySelectorAll('button:not([disabled]), [href]:not([tabindex="-1"])')]
+        .filter((element) => !element.hidden);
+    }
+
+    function openPromptKitModal() {
+      promptKitLastTrigger = document.activeElement;
+      promptKitFeedback.textContent = "";
+      promptKitModal.hidden = false;
+      document.body.classList.add("modal-open");
+      trackPromptKitEvent(promptKitConfig.events.open);
+      requestAnimationFrame(() => promptKitCloseButton.focus());
+    }
+
+    function closePromptKitModal() {
+      if (promptKitModal.hidden) return;
+      promptKitModal.hidden = true;
+      document.body.classList.remove("modal-open");
+      trackPromptKitEvent(promptKitConfig.events.close);
+      if (promptKitLastTrigger instanceof HTMLElement) promptKitLastTrigger.focus();
+    }
+
+    promptKitTrigger.addEventListener("click", openPromptKitModal);
+    promptKitCloseButton.addEventListener("click", closePromptKitModal);
+    promptKitModal.addEventListener("click", (event) => {
+      if (event.target === promptKitModal) closePromptKitModal();
+    });
+    promptKitCopyButton.addEventListener("click", async () => {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(promptKitConfig.promptContent);
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.value = promptKitConfig.promptContent;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.append(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        }
+        promptKitFeedback.textContent = "完整 Prompt 已复制，可以直接粘贴到 AI 编程工具中使用。";
+        trackPromptKitEvent(promptKitConfig.events.previewClick);
+      } catch (error) {
+        promptKitFeedback.textContent = "复制失败，请展开 Prompt 后手动复制。";
+      }
+    });
+
+    promptKitDownloadButton.addEventListener("click", () => {
+      const guide = `# 个人主页模板复用 Prompt\n\n## 使用前准备\n\n请准备个人简历、个人照片、项目封面、作品截图、简历 PDF 和有效项目链接。\n\n## 完整 Prompt\n\n${promptKitConfig.promptContent}`;
+      const blob = new Blob([guide], { type: "text/markdown;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const download = document.createElement("a");
+      download.href = url;
+      download.download = promptKitConfig.downloadPath;
+      document.body.append(download);
+      download.click();
+      download.remove();
+      URL.revokeObjectURL(url);
+      promptKitFeedback.textContent = "Markdown 指南已生成并开始下载。";
+      trackPromptKitEvent(promptKitConfig.events.previewClick);
+    });
+
+    document.querySelectorAll(".project-preview-button").forEach((button) => button.addEventListener("click", () => openProjectGallery(capabilitiesData.aiProjects[button.dataset.projectIndex])));
+    document.querySelectorAll(".project-cover-button").forEach((button) => button.addEventListener("click", () => openProjectGallery(capabilitiesData.aiProjects[button.dataset.projectIndex])));
+    lightbox.addEventListener("click", (event) => { if (event.target === lightbox || event.target.closest(".lightbox__close")) closeLightbox(); });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !promptKitModal.hidden) {
+        closePromptKitModal();
+        return;
+      }
+      if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Tab" || promptKitModal.hidden) return;
+      const focusable = getPromptKitFocusableElements();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => revealObserver.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    }
+  </script>
 </body>
 </html>
